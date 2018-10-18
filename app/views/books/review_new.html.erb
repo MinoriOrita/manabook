@@ -1,0 +1,16 @@
+<div class="main books-new">
+  <div class="container">
+    <div class="form-heading">書評書くところ</div>
+    <div class="form books-form">
+      <div class="form-body">
+        <%= form_tag("/books/#{@book.id}/review_create") do %>
+          <p>タイトル:<%= @book.title %></p>
+          <p>著者名:<%= @book.author %></p>
+          <h4>書評</h4>
+          <textarea name="review"><%= @review.review %></textarea>
+          <input type="submit" value="投稿">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

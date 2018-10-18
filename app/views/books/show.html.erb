@@ -1,0 +1,63 @@
+<div class="main books-show">
+  <div class="container">
+    <div class ="form-heading">本の詳細</div>
+    <div class="books-show-item">
+      <strong>
+        <p><%= @book.title %></p>
+      </strong>
+      <li>
+        著者：<%= @book.author %>
+      </li>
+      <li>
+        カテゴリー：<%= Book::CATEGORY_HASH[@book.category_name.to_i] %>
+      </li>
+      <li>
+        <%= @book.category_id %>
+      </li>
+      <li>
+        ISBNコード：<%= @book.ISBN %>
+      </li>
+      <li>
+        ステータス：<%= @book.status %>
+      </li>
+        <% if @book.status == "本棚" %>
+        <% unless @admin_user %>
+          <li>
+            <%= button_to("借りる", "/books/#{@book.id}/rental",{method: :post,class: "rental-button"}) %>
+          </li>
+          <% end %>
+         <% else %>
+         <% if @current_user && @rental != nil %>
+          <% if @rental.user_id == @current_user.id %>
+           <%= button_to("返す","/books/#{@book.id}/return",{method: :post,class: "rental-button"}) %>
+          <% end %>
+          <% end %>
+        <% end %>
+        <% if @admin_user %>
+         <%= button_to("削除","/books/#{@book.id}/destroy",{method:"post",class: "rental-button",data: {confirm: "本当に削除しますか？"}}) %>
+        <% end %>
+    </div>
+  </div>
+  <div class="container">
+  <div class="books-review-item">
+    <h3>書評</h3>
+    <% unless @admin_user %>
+      <%= button_to("書評を書く","/books/#{@book.id}/review_new",{method: :get,class: "review-button"}) %>
+    <% end %>
+  </div>
+  <% @reviews.each do |review| %>
+  <div class="books-review-item">
+        <!-- ここに書評書いた人の名前出したい -->
+      <li>
+        <%= review.review %>
+      </li>
+      <% if @current_user.id == review.user_id %>
+      <div class= "review-menus">
+        <%= button_to("編集", "/reviews/#{review.id}/edit") %>
+        <%= button_to("削除","/reviews/#{review.id}/destroy",{method:"post",data: {confirm: "本当に削除しますか？"}}) %>
+      </div>
+      <% end %>
+    </div>
+   <% end %>
+  </div>
+</div>

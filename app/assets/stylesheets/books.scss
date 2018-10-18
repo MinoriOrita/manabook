@@ -1,0 +1,157 @@
+/* books/index ================================ */
+.books-index-item {
+  padding: 15px 30px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.books-left img {
+  width: 50px;
+  height: 50px;
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
+}
+
+.book-title a {
+  font-weight: 600;
+}
+
+.book-title a:hover {
+  color: #A52A2A;
+}
+
+.book-left {
+  float: left;
+  width: 10%;
+}
+
+.book-right {
+  float: left;
+  width: 90%;
+  padding-left: 25px;
+  text-align: left;
+}
+table th{
+  border: 0.1px rgb(0, 0, 0) solid;
+  padding: 10px;
+  height: 100px;
+  width: 300px;
+}
+table td{
+  border: 0.1px rgb(0, 0, 0) solid;
+  padding: 10px;
+  height: 100px;
+  width: 300px;
+}
+
+
+/* books/show ================================ */
+.books-show form {
+  display: inline;
+}
+
+.books-show-item {
+  text-align: center;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+}
+
+.books-review-item{
+  padding: 15px 30px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.index-heading {
+  text-align: center;
+  font-weight: 300;
+  margin: 20px 0 20px;
+  font-size: 30px;
+  color: #996666;
+}
+
+
+.books-show-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.books-show-item .book-title a {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  margin-left: 0px;
+  font-weight: 600;
+}
+
+.books-show-item p {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.book-time {
+  color: #8899a6;
+  margin-bottom: 10px;
+}
+
+.book-menus {
+  float: right;
+}
+
+.book-menus a, .book-menus input {
+  color: #8899a6;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.rental-button{
+  background-color: #800000;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  width: 100px;
+  border-radius: 2px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  float: center;
+  box-shadow: 0 4px 8px #c1ced7;
+}
+
+.review-button{
+  background-color: #800000;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  width: 100px;
+  border-radius: 2px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  float: right;
+}
+
+.review-menus{
+  float: right;
+}
+
+/* books/new ================================ */
+.books-new textarea {
+  font-size: 20px;
+  padding: 10px;
+  min-height: 140px;
+  border: 1px solid rgb(216, 218, 223);
+  resize: none;
+}
+
+.books-new textarea::-webkit-input-placeholder {
+  font-size: 24px;
+  opacity: 0.5;
+}

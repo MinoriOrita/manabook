@@ -1,0 +1,35 @@
+<div class="main books-index">
+  <div class="container">
+  <div class ="index-heading">本の一覧</div>
+  <p>
+    ※未承認の本は載せていません
+  </p>
+  <table class="books-show-item" cellspacing="0">
+      <tr>
+        <th >タイトル</th>
+        <th >著者名</th>
+        <th >カテゴリー</th>
+        <th >ステータス</th>
+      </tr>
+      <tr>
+      <% @books.each do |book| %>
+        <td>
+        <div class="book-title">
+         <%= link_to(book.title, "/books/#{book.id}") %>
+        </div>
+        </td>
+        <td>
+         <%= book.author %>
+        </td>
+        <td>
+         <%= Book::CATEGORY_HASH[book.category_name.to_i] %>
+        </td>
+        <td >
+         <%= book.status %>
+      </td>
+      </tr>
+        <% end %>
+  </table>
+</div>
+</div>
+　

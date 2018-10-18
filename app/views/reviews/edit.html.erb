@@ -1,0 +1,19 @@
+<div class="main books-review-edit">
+  <div class="container">
+    <div class="form-heading">書評編集</div>
+    <div class="form review-form">
+      <div class="form-body">
+        <% @review.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= form_tag("/reviews/#{@review.id}/update") do %>
+          <p>書評</p>
+          <textarea name = "review"><%= @review.review %></textarea>
+          <input type="submit" value="保存">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

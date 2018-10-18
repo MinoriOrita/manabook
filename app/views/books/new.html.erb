@@ -1,0 +1,55 @@
+<div class="main books-new">
+  <div class="container">
+    <div class="form-heading">マナブック申請フォーム</div>
+    <div class="form books-form">
+      <div class="form-body">
+        <% @book.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= form_tag("/books/create") do %>
+          <p>タイトル</p>
+          <input name="title" value="<%= @book.title %>">
+          <p>著者名</p>
+          <input name="author" value="<%= @book.author %>">
+          <p>ISBN-13コード</p>
+          <input name="ISBN" placeholder="半角数字、ハイフンなしで入力してください" value="<%= @book.ISBN %>">
+          <p>カテゴリー</p>
+          <select name = "category_name">
+      　　　<option value = "">カテゴリ検索</option>
+      　　　<option value = 1001>漫画（コミック)</option>
+      　　　<option value=1002>語学・学習参考書</option>
+      　　　<option value=1003>絵本・児童書・図鑑</option>
+      　　　<option value=1004>小説・エッセイ</option>
+      　　　<option value=1005>パソコン・システ ム開発</option>
+      　　　<option value=1006>ビジネス・経済・就職</option>
+      　　　<option value=1007>旅行・留学・アウトドア</option>
+      　　　<option value=1008>人文・思想・社会</option>
+      　　　<option value=1009>ホビー・スポーツ・美術</option>
+      　　　<option value=1010>美容・暮らし・健康・料理</option>
+      　　　<option value=1011>エンタメ・ゲーム</option>
+      　　　<option value=1012>科 学・技術</option>
+      　　　<option value=1013>写真集・タレント</option>
+      　　　<option value=1015>その他</option>
+      　　　<option value=1016>資格・検定</option>
+      　　　<option value=1017>ライトノベル</option>
+      　　　<option value=1018>楽譜</option>
+      　　　<option value=1019>文庫</option>
+      　　　<option value=1020>新書</option>
+      　　　<option value=1021>ボーイズラブ（BL）</option>
+      　　　<option value=1022>付録付き</option>
+      　　　<option value=1023>バーゲン本</option>
+      　　　<option value=1025>コミックセット</option>
+      　　　<option value=1026>カレンダー・手帳・家計簿</option>
+      　　　<option value=1027>文具・雑貨</option>
+      　　　<option value=1028>医学・薬学・看護学・歯科学</option>
+    　　　</select>
+          <p>書評</p>
+          <textarea name="review" placeholder="ここもマストですよ"><%= @review.review %></textarea>
+          <input type="submit" value="申請">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

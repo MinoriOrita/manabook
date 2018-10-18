@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head><!-- Latest compiled and minified CSS -->
+    <title>マナブックのやつ。</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to("マナブックのやつ。", "/") %>
+      </div>
+      <ul class="header-menus">
+        <% if @current_user %>
+        <li>
+          <h4><%= link_to(@current_user.name,"/users/#{@current_user.id}") %></h4>
+        </li>
+        <li>
+          <h4><%= link_to("マナブック申請", "/books/new") %></h4>
+        </li>
+        <li>
+          <h4><%= link_to("本の一覧", "/books/index") %></h4>
+        </li>
+        <li>
+          <h4><%= link_to("ログアウト", "/logout",{method: :post}) %></h4>
+        </li>
+        <li>
+         <%= form_tag("/books/search_results",:method => 'get') do %>
+         <input name="search" class="form-control mr-sm-2" type="search" placeholder="タイトルか著者名で検索" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+         <% end %>
+        </li>
+        <% else %>
+          <% if @admin_user %>
+            <li>
+              <h4><%= link_to("本の一覧", "/books/index") %></h4>
+            </li>
+            <li>
+              <h4><%= link_to("ログアウト", "/logout",{method: :post}) %></h4>
+            </li>
+            <li>
+              <h4><%= link_to("管理者トップ","/admin") %></h4>
+            </li>
+            <li>
+              <%= form_tag("/books/search_results",:method => 'get') do %>
+              <input name="search" class="form-control mr-sm-2" type="search" placeholder="タイトルか著者名で検索" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <h4><%= link_to("本の一覧", "/books/index") %></h4>
+            </li>
+            <li>
+              <h4><%= link_to("ログイン", "/login") %></h4>
+            </li>
+            <li>
+              <h4><%= link_to("新規登録","/signup")%></h4>
+            </li>
+            <li>
+              <%= form_tag("/books/search_results",:method => 'get') do %>
+              <input name="search" class="form-control mr-sm-2" type="search" placeholder="タイトルか著者名で検索" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+              <% end %>
+            </li>
+          <% end %>
+          <% end %>
+      </ul>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

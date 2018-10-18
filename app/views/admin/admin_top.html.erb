@@ -1,0 +1,35 @@
+<div class="main books-index">
+  <div class="container">
+　<div class ="form-heading">申請された本の一覧</div>
+        <table class="books-show-item" cellspacing="0">
+            <tr>
+              <th >タイトル</th>
+              <th >著者名</th>
+              <th >カテゴリー</th>
+              <th >ステータス</th>
+              <th>承認する？</th>
+            </tr>
+            <tr>
+            <% @books.each do |book| %>
+              <td>
+              <div class="book-title">
+               <%= link_to(book.title, "/books/#{book.id}") %>
+              </div>
+              </td>
+              <td>
+               <%= book.author %>
+              </td>
+              <td>
+               <%= Book::CATEGORY_HASH[book.category_name.to_i] %>
+              </td>
+              <td >
+               <%= book.status %>
+            </td>
+            <td>
+              <%= link_to("承認","/admin/#{book.id}/status_change",{method:"post"}) %>
+            </td>
+            </tr>
+              <% end %>
+        </table>
+      </div>
+</div>

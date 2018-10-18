@@ -1,0 +1,19 @@
+<!-- 使ってません -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>戻る</title>
+</head>
+<body onload="document.forms[0].submit()">
+  <% if @back_controller && @back_action && @params %>
+  <%= form_tag({ controller: @back_controller, action: @back_action }, { method: 'post' }) do %>
+  <%= hidden_field_tag 'post[book_id]', @params['book_id'] %>
+  <% end %>
+  <% end %>
+  <noscript>
+    <%=%>
+  <%= button_tag '戻る', class: 'btn_sub'%>
+  </noscript>
+</body>
+</html>
