@@ -51,7 +51,7 @@
       <li>
         <%= review.review %>
       </li>
-      <% if @current_user.id == review.user_id %>
+      <% if @current_user == review.user_id %>
       <div class= "review-menus">
         <%= button_to("編集", "/reviews/#{review.id}/edit") %>
         <%= button_to("削除","/reviews/#{review.id}/destroy",{method:"post",data: {confirm: "本当に削除しますか？"}}) %>
